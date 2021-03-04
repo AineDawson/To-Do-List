@@ -16,9 +16,10 @@ class CreateToDoList extends Migration
         {
             Schema::create('to-do list', function (Blueprint $table) {
                 $table->string('name')->unique();
-                // $table->timestamp('created_at')->useCurrent();
-                // $table->timestamp('modified_at')->useCurrent();
-                // $table->string('airline');
+                $table->string('priority');
+                $table->foreign('priority')->references('name')->on('priorities');
+                $table->string('status');
+                $table->foreign('status')->references('status')->on('statuses');
                 $table->timestamps();
             });
         }
