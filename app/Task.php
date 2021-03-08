@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,4 +11,5 @@ class Task extends Model
     protected $primaryKey = 'name';
     public $incrementing = false;
     protected $keyType = 'string';
+
 }

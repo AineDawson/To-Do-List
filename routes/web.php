@@ -13,18 +13,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
-
-Route::get('/test', function () {
-    return "test";
+//for retrieving all tasks
+Route::get('/test', function(){
+    return view('test');
 });
 
 //testing retriving data
 Route::get('/tasks', function(){
     //$tasks = DB::table('to-do list')->get();
-    $tasks = App\models\Task::all();
+    $tasks = App\Task::all();
     return $tasks;
     //return view('to-do-list.index', ['tasks' => $tasks]);
+});
+
+Route::get('/alltasks', 'TaskController@taskfetch');
+
+//for retrieving all tasks
+Route::get('/', function(){
+    $tasks = App\Task::orderBy('created_at', 'asc')->get();
+
+    return view('tasks', [
+        'tasks' => $tasks
+    ]);
+});
+
+//for posting new tasks
+Route::post('/task', function(Request $request){
+    //
+});
+
+//for deleting tasks
+Route::delete('/task/{id}', function($id){
+    //
 });
