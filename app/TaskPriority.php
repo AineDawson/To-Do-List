@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaskPriority extends Model
 {
-    protected $table = 'priorities';
-    protected $primaryKey = 'name';
+    protected $table = 'task-priorities';
+    //protected $primaryKey = 'name'+'priority';
     public $incrementing = false;
-    protected $keyType = 'string';
+    //protected $keyType = 'string';
 }

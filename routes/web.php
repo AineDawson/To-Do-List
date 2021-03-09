@@ -16,10 +16,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-//for retrieving all tasks
+
+//testing creation of tasks
 Route::get('/test', function(){
-    return view('test');
+    return view('taskcreator');
 });
+Route::get('/testing', function(){
+    return view('testing');
+});
+
+//Success, need to add <php></php>
+Route::get('/testingpost', function(){
+    return view('testingpost');
+});
+Route::post('/testingpost2', function(){
+    return view('testingpost2');
+});
+
+
+//for testing validation methods
+Route::get( '/validation', function(){
+    return view('validation');
+});
+
 
 //testing retriving data
 Route::get('/tasks', function(){
@@ -31,20 +50,36 @@ Route::get('/tasks', function(){
 
 Route::get('/alltasks', 'TaskController@taskfetch');
 
-//for retrieving all tasks
-Route::get('/', function(){
-    $tasks = App\Task::orderBy('created_at', 'asc')->get();
+Route::get('/', 'TaskController@list');
 
-    return view('tasks', [
-        'tasks' => $tasks
-    ]);
+// Route::get('/newtask', 'TaskController@newtask');
+
+//for retrieving all tasks
+// Route::get('/', function(){
+//     $tasks = App\Task::orderBy('created_at', 'asc')->get();
+//     $taskpriority = App\TaskPriority::orderBy('task', 'asc')->get();
+//     return view('tasks', [
+//         'tasks' => $tasks,
+//         'taskpriority'=>$taskpriority
+//     ]);
+// });
+
+Route::get('/newtask', function(){
+    $priorities = App\Priority::orderBy('priority', 'asc')->pluck('priority');
+    return view('newtask',['priorities'=>$priorities]);
+});
+
+
+
+Route::post('/taskcreated', function(){
+    
+    return view('taskcreated');
 });
 
 //for posting new tasks
 Route::post('/task', function(Request $request){
-    //
+    return view('newtask');
 });
-
 //for deleting tasks
 Route::delete('/task/{id}', function($id){
     //

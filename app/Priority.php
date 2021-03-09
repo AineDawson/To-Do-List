@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Priority extends Model
 {
-
-    protected $table = 'to-do list';
-    protected $primaryKey = 'task';
+    protected $table = 'priorities';
+    protected $primaryKey = 'priority';
     public $incrementing = false;
     protected $keyType = 'string';
-
 }

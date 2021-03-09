@@ -5,8 +5,6 @@
     </head>
     <body>
         <h1>Task List</h1>
-    </body>
-
     <div>
         <table>
             <tr>
@@ -17,10 +15,14 @@
             @foreach ($tasks as $task)
             <tr>
                 <td>
-                    <div>{{ $task->name }}</div>
+                    <div>{{ $task->task }}</div>
                 </td>
                 <td>
-                    <div>{{ $task->priority }}</div>
+                    <div>
+                        @foreach ($taskpriority as $taskpriority)
+                        <div>{{$taskpriority}}</div>
+                        @endforeach
+                    </div>
                 </td>
                 <td>
                     <div>{{ $task->status }}</div>
@@ -35,7 +37,10 @@
             @endforeach
         </table>
     </div>
-    <div>
-        <button type="button">Create Task</button>
-    </div>
+
+    <form action="newtask" method="get">
+        <button type="submit" class="btn">Create Task</button>
+    </form>
+
+    </body>
 </html>
