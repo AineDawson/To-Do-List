@@ -13,8 +13,7 @@ class TaskSeeder extends Seeder
     public function run()
     {
         DB::table('to-do list')->insert([
-            'name' => Str::random(10),
-            'priority'=>'Optional',
+            'task' => 'feed cats',
             'status'=>'Incomplete',
             'created_at' => Carbon::parse('2020-03-03'),
             'updated_at' => Carbon::parse('2021-03-03'),

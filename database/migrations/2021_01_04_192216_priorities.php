@@ -14,7 +14,7 @@ class Priorities extends Migration
     public function up()
     {
         Schema::create('priorities', function (Blueprint $table) {
-            $table->string('name')->unique();
+            $table->string('priority')->unique();
 
         });
     }

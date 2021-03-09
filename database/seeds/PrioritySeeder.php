@@ -12,16 +12,16 @@ class PrioritySeeder extends Seeder
     public function run()
     {
         DB::table('priorities')->insert([
-            'name' => 'Urgent'
+            'priority' => 'Urgent'
         ]);
         DB::table('priorities')->insert([
-            'name' => 'Important'
+            'priority' => 'Important'
         ]);
         DB::table('priorities')->insert([
-            'name' => 'Ignore'
+            'priority' => 'Ignore'
         ]);
         DB::table('priorities')->insert([
-            'name' => 'Optional'
+            'priority' => 'Optional'
         ]);
     }
 }
