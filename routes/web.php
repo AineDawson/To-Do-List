@@ -71,15 +71,43 @@ Route::get('/newtask', function(){
 
 
 
-Route::post('/taskcreated', function(){
-    
+Route::post('/taskcreated', function(Request $request){
+    // $validator = Validator::make($request->all(), [
+    //     'name' => 'required|max:255',
+    // ]);
+
+    // if ($validator->fails()) {
+    //     return redirect('/')
+    //         ->withInput()
+    //         ->withErrors($validator);
+    // }
+
+    $task = new App\Task;
+    $task->task = $request;
+    $task->status = 'Incomplete';
+    $task->save();
     return view('taskcreated');
 });
 
 //for posting new tasks
-Route::post('/task', function(Request $request){
-    return view('newtask');
+Route::post('/task', function (Request $request) {
+    // $validator = Validator::make($request->all(), [
+    //     'name' => 'required|max:255',
+    // ]);
+
+    // if ($validator->fails()) {
+    //     return redirect('/')
+    //         ->withInput()
+    //         ->withErrors($validator);
+    // }
+
+    // $task = new Task;
+    // $task->name = $request->name;
+    // $task->save();
+
+    // return redirect('/');
 });
+
 //for deleting tasks
 Route::delete('/task/{id}', function($id){
     //

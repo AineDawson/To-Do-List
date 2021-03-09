@@ -9,12 +9,20 @@ $name = $priority ="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = test_input($_POST["name"]);
 //   $priorities = test_input($_POST["priority"]);
+    newtask($name);
 }
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
+}
+
+function newtask($name){
+    $task = new App\Task;
+    $task->task = $name;
+    $task->status = 'Incomplete';
+    $task->save();
 }
 ?>
 
