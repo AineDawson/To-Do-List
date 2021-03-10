@@ -27,7 +27,20 @@
                     </div>
                 </td>
                 <td>
-                    <div>{{ $task->status }}</div>
+                    <form action="changestatus" method="post">
+                            @csrf
+                            <?php $newstatus=''; 
+                                if($task->status == 'Incomplete'){
+                                    $newstatus='Complete';
+                                }else{
+                                    $newstatus='Incomplete';
+                                }
+                                $tasktoupdate=$task->task;
+                                ?>
+                            <input type="hidden" name="tasktoupdate" value="{{$tasktoupdate}}" >
+                            <input type="hidden" name="statusupdate" value="{{$newstatus}}" >
+                            <button type="submit" class="btn"}>{{$task->status}}</button>
+                        </form>
                 </td>
                 <td>
                     <div><button type="button">EDIT</button></div>
