@@ -62,4 +62,31 @@ class TaskController extends Controller
         Task::where('task','=',$task)->update(['status'=>$status]);
         return redirect('/');
     }
+
+    function edittask(){
+        $priorities = Priority::orderBy('priority', 'asc')->pluck('priority');
+        return view('edittask',['priorities'=>$priorities]);
+    }
+    function taskedited(){
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name=$_POST["name"];
+            $originalname=$_POST["originaltask"];
+            $name = trim($name);
+            $name = stripslashes($name);
+            $name = htmlspecialchars($name);
+            print_r($name);
+            print_r($originalname);
+            $priorities = $_POST["priority"];
+            print_r($priorities);
+            TaskPriority::where('task','=',$originalname)->delete();
+            Task::where('task','=',$originalname)->update(['task'=>$name]);
+            foreach ($priorities as $priority){
+                $taskpri = new TaskPriority;
+                $taskpri->task = $name;
+                $taskpri->priority = $priority;
+                $taskpri->save();
+            }
+            return redirect('/');
+        }
+    }
 }

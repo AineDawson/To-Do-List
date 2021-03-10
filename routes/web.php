@@ -23,3 +23,7 @@ Route::post('/taskcreated', 'TaskController@taskcreated');
 Route::delete('/deletetask', 'TaskController@deletetask');
 
 Route::post('/changestatus','TaskController@changestatus');
+
+Route::post('/edittask','TaskController@edittask');
+
+Route::post('/taskedited','TaskController@taskedited');

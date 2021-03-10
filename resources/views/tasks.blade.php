@@ -43,7 +43,11 @@
                         </form>
                 </td>
                 <td>
-                    <div><button type="button">EDIT</button></div>
+                    <form action="edittask" method="post">
+                    @csrf
+                        <input type="hidden" name="tasktoedit" value="{{$tasktoupdate}}" >
+                        <button type="submit" class="btn">Edit</button>
+                    </form>
                 </td>
                 <td>
                     <form action="deletetask" method="post">
