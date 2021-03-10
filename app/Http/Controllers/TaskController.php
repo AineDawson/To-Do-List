@@ -16,7 +16,7 @@ class TaskController extends Controller
 
     function list(){
         $tasks = Task::orderBy('created_at', 'asc')->get();
-        $taskpriority = TaskPriority::orderBy('task', 'asc')->pluck('priority');
+        $taskpriority = TaskPriority::orderBy('task', 'asc')->get();
         // foreach( $taskpriority as $tp){
         //     $result= $tp;
         //     print_r($result);

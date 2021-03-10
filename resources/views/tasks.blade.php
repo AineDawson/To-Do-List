@@ -19,8 +19,10 @@
                 </td>
                 <td>
                     <div>
-                        @foreach($taskpriority as $tp)
-                        <div>{{$tp}}</div>
+                        <?php $priorities = App\TaskPriority::where('task', $task->task)
+                            ->get();?>
+                        @foreach($priorities as $tp)
+                        <div>{{$tp->priority}}</div>
                         @endforeach
                     </div>
                 </td>
@@ -44,3 +46,4 @@
 
     </body>
 </html>
+
