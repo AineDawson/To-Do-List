@@ -82,10 +82,10 @@ Route::post('/taskcreated', function(Request $request){
     //         ->withErrors($validator);
     // }
 
-    $task = new App\Task;
-    $task->task = $request;
-    $task->status = 'Incomplete';
-    $task->save();
+    // $task = new App\Task;
+    // $task->task = $request;
+    // $task->status = 'Incomplete';
+    // $task->save();
     return view('taskcreated');
 });
 

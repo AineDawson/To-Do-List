@@ -19,8 +19,8 @@
                 </td>
                 <td>
                     <div>
-                        @foreach ($taskpriority as $taskpriority)
-                        <div>{{$taskpriority}}</div>
+                        @foreach($taskpriority as $tp)
+                        <div>{{$tp}}</div>
                         @endforeach
                     </div>
                 </td>

@@ -3,13 +3,17 @@
 
 <?php
 // define variables and set to empty values
-$name = $priority ="";
+$name  ="";
 
 //validates the forms
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = test_input($_POST["name"]);
-//   $priorities = test_input($_POST["priority"]);
-    newtask($name);
+  $priorities = $_POST["priority"];
+  newtask($name);
+  foreach ($priorities as $p){
+      newtaskpriority($name, $p);
+  }
+    
 }
 function test_input($data) {
   $data = trim($data);
@@ -23,6 +27,12 @@ function newtask($name){
     $task->task = $name;
     $task->status = 'Incomplete';
     $task->save();
+}
+function newtaskpriority($name, $priority){
+    $taskpri = new App\TaskPriority;
+    $taskpri->task = $name;
+    $taskpri->priority = $priority;
+    $taskpri->save();
 }
 ?>
 
