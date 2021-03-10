@@ -8,32 +8,44 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function taskfetch()
-    {
-        $tasks = Task::all();
-        return $tasks;
-    }
-
+    
+    //displays the main task list
     function list(){
         $tasks = Task::orderBy('created_at', 'asc')->get();
         $taskpriority = TaskPriority::orderBy('task', 'asc')->get();
-        // foreach( $taskpriority as $tp){
-        //     $result= $tp;
-        //     print_r($result);
-        // }
         return view('tasks', [
             'tasks' => $tasks,
             'taskpriority'=>$taskpriority
         ]);
     }
 
+    //opens new page for creation of tasks
     function newtask(){
-        $priority = Priority::orderBy('priority', 'asc')->pluck('priority');
-        foreach( $priority as $p){
-            $result= $p;
-            echo $result;
-        }
-        return view('createnewtask', ['priority'=>$priority]);
+        $priorities = Priority::orderBy('priority', 'asc')->pluck('priority');
+        return view('newtask',['priorities'=>$priorities]);
     }
-    
+
+    //creates a new task
+    function taskcreated(){
+        //validates the forms
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            //security?
+            $name=$_POST["name"];
+            $name = trim($name);
+            $name = stripslashes($name);
+            $name = htmlspecialchars($name);
+            $priorities = $_POST["priority"];
+            $newtask = new Task;
+            $newtask->task = $name;
+            $newtask->status = 'Incomplete';
+            $newtask->save();
+            foreach ($priorities as $priority){
+                $taskpri = new TaskPriority;
+                $taskpri->task = $name;
+                $taskpri->priority = $priority;
+                $taskpri->save();
+            }
+            return redirect('/');
+        }
+    }
 }
