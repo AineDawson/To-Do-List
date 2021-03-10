@@ -20,3 +20,4 @@ Route::get('/newtask', 'TaskController@newtask');
 
 Route::post('/taskcreated', 'TaskController@taskcreated');
 
+Route::delete('/deletetask', 'TaskController@deletetask');

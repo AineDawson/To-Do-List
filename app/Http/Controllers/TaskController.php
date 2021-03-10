@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    
+
     //displays the main task list
     function list(){
         $tasks = Task::orderBy('created_at', 'asc')->get();
@@ -47,5 +47,14 @@ class TaskController extends Controller
             }
             return redirect('/');
         }
+    }
+
+    function deletetask(){
+        //print_r($_POST);
+        print_r($_POST["todelete"]);
+        $task=$_POST["todelete"];
+        TaskPriority::where('task','=',$task)->delete();
+        Task::where('task','=',$task)->delete();
+        return redirect('/');
     }
 }

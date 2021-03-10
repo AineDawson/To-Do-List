@@ -33,7 +33,13 @@
                     <div><button type="button">EDIT</button></div>
                 </td>
                 <td>
-                    <button type="button">DELETE</button>
+                    <form action="deletetask" method="post">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <?php $tasktodelete=$task->task; ?>
+                        <input type="hidden" name="todelete" value="{{$tasktodelete}}" >
+                        <button type="submit" class="btn"}>Delete</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
