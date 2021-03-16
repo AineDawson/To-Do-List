@@ -11,7 +11,8 @@ class TaskController extends Controller
 
     //displays the main task list
     function list(){
-        $tasks = Task::orderBy('created_at', 'asc')->get();
+        // $tasks = Task::orderBy('status', 'asc')->get();
+        $tasks=Task::paginate(10);
         $taskpriority = TaskPriority::orderBy('task', 'asc')->get();
         return view('tasks', [
             'tasks' => $tasks,
