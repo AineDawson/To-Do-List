@@ -7,9 +7,8 @@ Difficulties:
 4. Learning to get and use data from database.
 
 TO-DO:
-1.Make table sortable
-2.Create pages to display all task data
-3.Record creation and deletion time of tasks
-4.Record when tasks where completed
-5.Add css
-6.Put build instructions in README
+1.Create pages to display all task data
+2.Record creation and deletion time of tasks
+3.Record when tasks where completed
+4.Add css
+5.Put build instructions in README
