@@ -26,4 +26,10 @@ Route::post('/changestatus','TaskController@changestatus');
 
 Route::post('/edittask','TaskController@edittask');
 
+Route::get('/edittask','TaskController@returnhome');
+
 Route::post('/taskedited','TaskController@taskedited');
+
+Route::post('/taskview','TaskController@taskview');
+
+Route::get('/taskview','TaskController@returnhome');

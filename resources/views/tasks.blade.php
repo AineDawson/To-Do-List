@@ -80,6 +80,13 @@ tr:nth-child(even) {
                     </form>
                 </td>
                 <td>
+                    <form action="taskview" method="post">
+                    @csrf
+                        <input type="hidden" name="tasktoedit" value="{{$tasktoupdate}}" >
+                        <button type="submit" class="btn">View</button>
+                    </form>
+                </td>
+                <td>
                     <form action="deletetask" method="post">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">

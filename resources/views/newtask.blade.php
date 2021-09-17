@@ -19,7 +19,7 @@
     @endforeach
   </script>
   
-  <select name="priority[]" multiple="multiple" size="5">
+  <select name="priority[]" multiple="multiple" size="5" required>
   @foreach ($priorities as $p)
     <option value={{$p}}>{{$p}}</option>
   @endforeach

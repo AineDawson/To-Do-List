@@ -60,7 +60,11 @@ class TaskController extends Controller
     function changestatus(){
         $status=$_POST["statusupdate"];
         $task=$_POST["tasktoupdate"];
+        $timestamp = date('Y-m-d H:i:s');
+        if($status == "Incomplete")
+            $timestamp=null;
         Task::where('task','=',$task)->update(['status'=>$status]);
+        Task::where('task','=',$task)->update(['Completed'=>$timestamp]);
         return redirect('/');
     }
 
@@ -90,4 +94,12 @@ class TaskController extends Controller
             return redirect('/');
         }
     }
+    function taskview(){
+        $priorities = Priority::orderBy('priority', 'asc')->pluck('priority');
+        return view('taskview',['priorities'=>$priorities]);
+    }
+    function returnhome(){
+        return redirect('/');
+    }
+    
 }

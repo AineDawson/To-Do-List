@@ -1,5 +1,14 @@
 <!DOCTYPE HTML>  
 <html>
+
+<style>
+  div{
+    width: 100px;
+    height: 150px;
+    border: 1px solid black;
+  }
+  
+  </style>
 <head>
 </head>
 <body>  
@@ -16,12 +25,13 @@
   <div class="container" id="parentDiv">
   Priorities: <br> 
 
-  <script>
+  <!-- <script>
   @foreach ($priorities as $p)
     @endforeach
-  </script>
+  </script> -->
   
-  <select name="priority[]" multiple="multiple" size="5">
+  
+  <select name="priority[]" multiple="multiple" size="4">
   @foreach ($priorities as $p)
   <?php $taskspriorities = App\TaskPriority::where('task','=', $task)->where('priority','=',$p)->exists();
   if($taskspriorities){ ?>
@@ -34,6 +44,10 @@
 </select>
   </div>
   <input type="submit" name="submit" value="Submit">  
+</form>
+
+<form action="" method="get">
+        <button type="submit" class="btn">Back</button>
 </form>
 
 
